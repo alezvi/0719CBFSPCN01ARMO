@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     @stack('styles')
 
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
     <title>@yield('title', 'Titulo')</title>
   </head>
   <body>
