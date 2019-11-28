@@ -17,8 +17,6 @@ class MoviesController extends Controller
             $movies = Movie::paginate(3)->appends($request->only('q'));
         }
 
-        return $movies;
-
         return view('movies.index', [
             'movies' => $movies,
         ]);

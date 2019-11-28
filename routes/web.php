@@ -11,3 +11,7 @@ Route::post('/products', 'ProductsController@store');
 
 Route::get('/movies', 'MoviesController@index');
 Route::get('/movies/{movie}', 'MoviesController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

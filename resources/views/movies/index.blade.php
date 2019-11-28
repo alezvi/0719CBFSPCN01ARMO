@@ -1,19 +1,32 @@
+@extends('layouts.website')
 
-<form action="">
-    <div>
-        <input type="text" name="q" placeholder="Buscar..." value="{{ request('q') }}">
-    </div>
-    <div>
-        <button>Buscar</button>
-    </div>
-</form>
+@section('content')
+<div id="movies-list"></div>
 
-<a href="/movies">Limpiar busqueda</a>
+<script>
 
-<ul>
-    @foreach ($movies as $movie)
-        <li>{{ $movie->title }}</li>
-    @endforeach
-</ul>
+let listadoDePeliculas = document.getElementById('movies-list')
 
-{{ $movies->links() }}
+function movieInfo(movie) {
+    return `
+        <div class="card">
+            <p>${movie.title}</p>
+            <p>Duracion: ${movie.length}</p>
+        </div>
+    `
+}
+
+fetch('http://localhost:8000/api/movies')
+    .then(function (response) {
+        return response.json()
+    })
+    .then(function (movies) {
+        // cada pelicula del array pasa a la funcion callback
+        movies.data.map(function (movie) {
+            // la funcion genera el html de cada pelicula
+            listadoDePeliculas.innerHTML += movieInfo(movie) 
+        })
+    })
+</script>
+
+@endsection
